@@ -1,0 +1,12 @@
+Parts
+{
+	PlasmaBlaster = "Plasma Blaster"
+	PlasmaBlasterIcon = "Plasma Blaster"
+	PlasmaBlasterDesc = "Rapidly shoots devastating blasts of plasma."
+}
+
+StatCategories
+{
+    PlasmaBolt = "Plasma Bolt"
+}
+

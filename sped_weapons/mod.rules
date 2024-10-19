@@ -1,0 +1,32 @@
+ID = choyu.sped_weapons
+Name = "Sped Weapons"
+Version = 0.0.24
+CompatibleGameVersions = ["0.23.3"]
+ModifiesMultiplayer = true
+Author = "choyu"
+Logo = "logo.png"
+Description = "Kinda Scuffed ngl"
+
+Actions
+[
+	{
+		Action = Replace
+		Replace = "<buffs/buffs.rules>/RailgunShot/Multiplier"
+		With = 200%
+	}
+	{
+		Action = Replace
+		Replace = "<ships/terran/railgun_launcher/railgun_launcher.rules>/Part/Components/Weapon/FireInterval"
+		With = 0.075
+	}
+    {
+		Action = AddMany
+		AddTo = "<ships/terran/terran.rules>/Terran/Parts"
+		CreateIfNotExisting = false
+		IgnoreIfNotExisting = false
+		ManyToAdd
+		[
+			&<plasma_blaster/plasma_blaster.rules>/Part
+		]
+	}
+]
