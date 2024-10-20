@@ -1,6 +1,6 @@
 ID = choyu.sped_weapons
 Name = "Sped Weapons"
-Version = 0.0.24
+Version = 0.3.0
 CompatibleGameVersions = ["0.23.3"]
 ModifiesMultiplayer = true
 Author = "choyu"
@@ -17,7 +17,7 @@ Actions
 	{
 		Action = Replace
 		Replace = "<ships/terran/railgun_launcher/railgun_launcher.rules>/Part/Components/Weapon/FireInterval"
-		With = 0.075
+		With = 1
 	}
     {
 		Action = AddMany
@@ -27,6 +27,13 @@ Actions
 		ManyToAdd
 		[
 			&<plasma_blaster/plasma_blaster.rules>/Part
+            &<falling_star/falling_star.rules>/Part
+            &<armor_neutronium/armor_neutronium.rules>/Part
+			&<armor_neutronium_2x1/armor_neutronium_2x1.rules>/Part
+			&<armor_neutronium_wedge/armor_neutronium_wedge.rules>/Part
+			&<armor_neutronium_tri/armor_neutronium_tri.rules>/Part
+			&<armor_neutronium_1x2_wedge/armor_neutronium_1x2_wedge.rules>/Part
+			&<armor_neutronium_1x3_wedge/armor_neutronium_1x3_wedge.rules>/Part
 		]
 	}
 ]

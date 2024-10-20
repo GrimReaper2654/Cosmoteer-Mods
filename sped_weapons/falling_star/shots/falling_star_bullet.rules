@@ -1,0 +1,210 @@
+ID = "choyu.falling_star_bullet"
+Range = 1750
+IdealRange = [25, 250]
+IdealRadius = [5, 50]
+Speed = 30
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1.1
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 75000
+		TargetCategory = "bullet"
+
+		OnDeath
+		{
+			MediaEffects = &~/Components/Hit/HitOperational/MediaEffects
+		}
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = 120.0
+		PenetrationSpeed = 20
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		FriendlyShipLowCollisions = false
+		PenetratesCrew = true
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			ReduceEffectsByPenetration = true
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 75000
+				}
+				{
+					Type = Impulse
+					Impulse = 5000
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/bullet_hit_deck.rules>
+				&<particles/bullet_hit_deck_sparks.rules>
+				&<particles/bullet_smoke_deck.rules>
+				&<particles/bullet_flash_deck.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "bullet_deck_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .2
+					Duration = .75
+				}
+			]
+		}
+		HitStructural
+		{
+			ReduceEffectsByPenetration = true
+			Offset = [0.5, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 5000
+				}
+				{
+					Type = Impulse;
+					Impulse = 150
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/bullet_hit_large.rules>
+				&<particles/bullet_hit_deck_sparks.rules>
+				&<particles/bullet_flash_deck_struct.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "bullet_deck_hit_structure.wav"
+					Volume = .5
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 50000
+				}
+				{
+					Type = Fire
+					FireChance = .05
+				}
+				{
+					Type = Impulse
+					Impulse = 1000
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/bullet_hit_deck.rules>
+				&<particles/bullet_hit_deck_sparks.rules>
+			]
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
+	}
+
+	Sprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletUpper3
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "particles/bullet_large.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				Size = [1.1, 1.1]
+			}
+			FrameCount = 16
+			FrameSize = [256, 256]
+			FramesPerRow = 4
+			FramesPerSecond = 120
+		}
+		NormalsTexture = &Animation/AtlasSprite/Texture
+		DiffuseShader = "./Data/default.shader"
+		NormalsShader = "./Data/no_normals.shader"
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 0.5
+		IsLight = true
+		Offset = [-1.5, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [18, 9]
+			VertexColor = [255, 100, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.125
+		}
+	}
+
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffects
+		[
+			&<particles/bullet_trail_deck.rules>
+		]
+	}
+}

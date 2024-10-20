@@ -2,11 +2,40 @@ Parts
 {
 	PlasmaBlaster = "Plasma Blaster"
 	PlasmaBlasterIcon = "Plasma Blaster"
-	PlasmaBlasterDesc = "Rapidly shoots devastating blasts of plasma."
+	PlasmaBlasterDesc = "Experimental particle accelerator that rapidly shoots devastating blasts of plasma."
+
+    FallingStar = "Falling Star"
+	FallingStarIcon = "Falling Star"
+	FallingStarDesc = "Experimental super cannon that launches slow but almost unstoppable neutron stars."
+
+    NeutroniumArmor = "Neutronium Armor"
+	NeutroniumArmorIcon = &NeutronArmor
+	NeutroniumArmorDesc = "Neutronium is a material created by compacting neutrons closely together, making it significantly stronger and denser than any other material."
+	
+	NeutroniumArmor1x2Wedge = "Neutronium Armor 1x2 Wedge"
+	NeutroniumArmor1x2WedgeIcon = &NeutroniumArmor1x2Wedge
+	NeutroniumArmor1x2WedgeDesc = &NeutroniumArmorDesc
+
+	NeutroniumArmor2x1 = "Neutronium Armor 2x1"
+	NeutroniumArmor2x1Icon = &NeutronArmor2x1
+	NeutroniumArmor2x1Desc = &NeutroniumArmorDesc
+
+	NeutroniumArmorTri = "Neutronium Armor Triangle"
+	NeutroniumArmorTriIcon = &NeutronArmorTri
+	NeutroniumArmorTriDesc = &NeutroniumArmorDesc
+
+	NeutroniumArmorWedge = "Neutronium Armor Wedge"
+	NeutroniumArmorWedgeIcon = &NeutronArmorWedge
+	NeutroniumArmorWedgeDesc = &NeutroniumArmorDesc
+	
+	NeutroniumArmor1x3Wedge = "Neutronium Armor 1x3 Wedge"
+	NeutroniumArmor1x3WedgeIcon = &NeutronArmor1x3Wedge
+	NeutroniumArmor1x3WedgeDesc = &NeutroniumArmorDesc
 }
 
 StatCategories
 {
     PlasmaBolt = "Plasma Bolt"
+    FallingStarBullet = "Neutron Star"
 }
 
